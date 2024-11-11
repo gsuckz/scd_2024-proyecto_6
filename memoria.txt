@@ -1,0 +1,62 @@
+1. Modulaciones Digitales en Banda Pasante
+1.1 ASK (Amplitude Shift Keying)
+En ASK, la amplitud de una portadora se ajusta en función de los datos digitales.
+Aplicación: Frecuente en sistemas donde la potencia debe ser controlada, como redes de baja potencia.
+Ventajas: Simple implementación.
+Desventajas: Sensible a ruido y atenuación en el canal.
+1.2 FSK (Frequency Shift Keying)
+La frecuencia de la portadora cambia en función de los datos. Dos frecuencias representan los estados "0" y "1" en FSK binario, mientras que en M-FSK, se utilizan múltiples frecuencias.
+Aplicación: Muy usado en radiofrecuencia y sistemas de baja interferencia.
+Ventajas: Menos sensible al ruido que ASK.
+Desventajas: Requiere un ancho de banda mayor.
+1.3 MSK (Minimum Shift Keying) y GMSK (Gaussian MSK)
+MSK: La frecuencia de la portadora cambia, pero la variación es mínima, lo que reduce las discontinuidades de fase.
+GMSK: Utiliza un filtro gaussiano para suavizar la señal de entrada antes de la modulación.
+Aplicación: Esquema de modulación en tecnologías como GSM.
+Ventajas: Alta eficiencia espectral y menor interferencia.
+Desventajas: Más compleja de implementar.
+1.4 PSK (Phase Shift Keying)
+La fase de la portadora se cambia en función de los datos transmitidos.
+BPSK (Binary PSK): Usa dos fases (0° y 180°) para representar los bits 0 y 1.
+QPSK (Quadrature PSK): Usa cuatro fases (0°, 90°, 180°, 270°) permitiendo codificar 2 bits por símbolo.
+Aplicación: Comunicaciones satelitales, sistemas de radio digital.
+Ventajas: Más resistente al ruido en comparación con ASK y FSK.
+Desventajas: Complejidad creciente con modulación de orden superior.
+1.5 QAM (Quadrature Amplitude Modulation)
+Combina cambios en la amplitud y la fase de la señal portadora.
+16-QAM: Utiliza 16 combinaciones distintas de amplitud y fase, permitiendo codificar 4 bits por símbolo.
+Aplicación: Televisión digital, redes de alta velocidad.
+Ventajas: Alta eficiencia espectral.
+Desventajas: Sensible a ruido y distorsión.
+1.6 8-PSK y 16-QAM
+8-PSK: Es una extensión de PSK con 8 fases distintas, codificando 3 bits por símbolo.
+16-QAM: Codifica 4 bits por símbolo con cambios en la amplitud y fase, ideal para canales de alta calidad.
+Aplicación: Redes de banda ancha.
+Ventajas y Desventajas: Similar a QPSK y 16-QAM, con mejores ratios de transmisión pero mayores requerimientos de SNR.
+2. Diseño de Moduladores y Demoduladores en Bandas Pasantes
+Moduladores Sincrónicos y Asincrónicos
+Moduladores Sincrónicos: Mantienen sincronía en la frecuencia y fase del transmisor y receptor. Necesarios en QAM y PSK.
+Moduladores Asincrónicos: Más simples, pero presentan mayor susceptibilidad a errores de fase y frecuencia.
+Control Automático de Frecuencia (AFC) y Sincronismo de Frecuencia
+AFC: Corrige desviaciones de frecuencia en el receptor mediante ajustes de oscilador.
+Sincronismo de Frecuencia: Alinea la frecuencia del receptor con la señal recibida, esencial para PSK y QAM.
+Control Automático de Ganancia (AGC)
+AGC ajusta automáticamente la amplitud de la señal en el receptor para mantener niveles óptimos, especialmente útil en entornos con atenuación variable.
+Sincronismo de Símbolo
+Sincroniza la tasa de muestra del receptor con la transmisión, crucial para evitar errores de decodificación en PSK y QAM.
+3. Simulaciones en Canales con Ruido Blanco Gaussiano Aditivo (AWGN)
+Para modelar estos efectos en tus simulaciones:
+
+Efectos del Canal y Condiciones de Desempeño
+Ruido Blanco Gaussiano Aditivo (AWGN): Agregar ruido a la señal transmitida para simular el ruido presente en canales reales.
+Limitación de Frecuencia (Filtrado): Modelar filtros de canal que limitan la banda de la señal, lo que puede causar interferencia entre símbolos.
+Atenuación y Desfasaje: Simular pérdida de potencia y cambios de fase en la señal recibida.
+Desviación de Frecuencia en el Oscilador Local: Introducir una discrepancia de frecuencia para evaluar el desempeño en sincronismo.
+Evaluación de la Tasa de Error de Bit (BER)
+El BER indica el desempeño de un sistema de comunicación midiendo la fracción de bits incorrectos.
+Implementación:
+Para cada modulación, generar una señal aleatoria.
+Pasarla a través del canal con AWGN y otros efectos.
+Demodular y comparar con los datos originales para calcular el BER.
+4. Implementación Práctica en Simulaciones (Python o MATLAB)
+Aquí tienes una guía general de simulación en Python. Para modelos específicos en MATLAB, se pueden adaptar fácilmente.
